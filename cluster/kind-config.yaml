@@ -1,0 +1,12 @@
+# kind create cluster --name helm-lab --config cluster/kind-config.yaml
+#
+# Varsayılan: tek node (control-plane). Podman WSL machine'de `podman machine set
+# --memory` desteklenmiyor; 2 GiB raporlanan ortamda multi-node Kind sık OOM olur.
+# Helm lab'ları (Band 1–3) tek node ile yeter. CKA multi-node için .wslconfig ile
+# WSL RAM artırıp aşağıdaki worker satırlarının yorumunu kaldır.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  # - role: worker
+  # - role: worker

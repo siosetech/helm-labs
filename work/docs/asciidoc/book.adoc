@@ -1,0 +1,22 @@
+= Helm Labs
+:author: helm-labs
+:project-version: 0.1.0
+:revnumber: {project-version}
+:doctype: book
+:sectnums:
+:toc: left
+:toclevels: 3
+:icons: font
+:experimental:
+:chapter-label:
+:source-highlighter: rouge
+
+
+Synthesized notes from hands-on Helm practice (CKA/CKAD, CGOA/CAPA, CKS).
+Lab drills stay in `chapters/`; this book captures what stuck.
+
+include::chapters/00-intro.adoc[]
+
+include::chapters/01-cli.adoc[]
+
+include::chapters/02-kustomize.adoc[]

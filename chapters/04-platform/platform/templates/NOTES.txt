@@ -1,0 +1,8 @@
+platform {{ .Chart.Version }} installed as release {{ .Release.Name }}.
+
+Next Band 04 steps (see ../README.md):
+  - add dependencies (alias / condition / tags)
+  - global values + import-values
+  - hooks, tests, values.schema.json
+  - OCI + signing (../cks)
+  - Argo CD Application (../argocd)

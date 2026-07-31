@@ -1,0 +1,22 @@
+== Introduction
+
+This ebook is a side product of the lab repo, not a copy of the lab READMEs.
+
+=== How to use this book
+
+* Practice blind drills under `chapters/`.
+* After a session, add a short AsciiDoc section here (traps, commands, cert notes).
+* Rebuild HTML/PDF from `work/docs` (container build).
+
+=== Build
+
+Container-only (Podman or Docker). No host JDK required.
+
+[source,bash]
+----
+cd work/docs
+./build.sh
+# Windows: .\build.ps1
+----
+
+Outputs land in `target/generated-docs/` (`book.html`, `book.pdf`).

@@ -1,0 +1,23 @@
+# Ebook build — Podman or Docker. No host JDK/Maven.
+#   podman compose run --rm ebook
+#   docker compose run --rm ebook
+services:
+  ebook:
+    image: docker.io/asciidoctor/docker-asciidoctor:1.85
+    working_dir: /documents
+    volumes:
+      - ./:/documents
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -eu
+        mkdir -p target/generated-docs
+        asciidoctor \
+          -D target/generated-docs -o book.html \
+          -a project-version=0.1.0 \
+          asciidoc/book.adoc
+        asciidoctor-pdf \
+          -D target/generated-docs -o book.pdf \
+          -a project-version=0.1.0 \
+          asciidoc/book.adoc
+        echo "Wrote target/generated-docs/book.html and book.pdf"

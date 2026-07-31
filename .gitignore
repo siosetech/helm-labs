@@ -1,0 +1,20 @@
+# Helm
+charts/*.tgz
+*.tgz
+Chart.lock
+**/charts/*/
+
+# Local scratch
+scratch/
+work/scratch/
+*.local.yaml
+chapters/02-kustomize/**/chart-out/
+
+# Ebook build (Maven / Asciidoctor)
+work/docs/target/
+
+# Editor
+.idea/
+.vscode/
+*.iml
+.DS_Store

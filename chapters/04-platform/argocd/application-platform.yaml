@@ -1,0 +1,28 @@
+# CGOA/CAPA lab stub — repoURL / path / revision kendi ortamına göre doldur.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # Örnek: https://github.com/<you>/helm-labs.git
+    repoURL: REPLACE_ME
+    targetRevision: HEAD
+    path: chapters/04-platform/platform
+    helm:
+      valueFiles:
+        - values.yaml
+      # parameters:
+      #   - name: app.replicaCount
+      #     value: "2"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    # automated:
+    #   prune: true
+    #   selfHeal: true

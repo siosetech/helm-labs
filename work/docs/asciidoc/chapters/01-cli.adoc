@@ -1,0 +1,34 @@
+== CLI mechanics
+
+Cert focus: CKA, CKAD. Chart authoring is out of scope for the exam; release lifecycle is not.
+
+=== Core loop
+
+[source,bash]
+----
+helm repo add … && helm repo update
+helm install RELEASE CHART [-f values.yaml] [--set key=value]
+helm upgrade RELEASE CHART …
+helm history RELEASE
+helm rollback RELEASE REVISION
+helm uninstall RELEASE
+----
+
+=== Inspect before you apply
+
+[source,bash]
+----
+helm template RELEASE CHART --set …
+helm install RELEASE CHART --dry-run --debug
+helm get values RELEASE
+helm get manifest RELEASE
+----
+
+=== Session notes
+
+////
+Add traps and cert reminders after Band 1 sessions.
+////
+
+* Prefer `-f` for durable overrides; use `--set` for one-off tweaks (and know precedence).
+* After a bad upgrade, read `helm history` then `helm rollback` — do not re-install blindly.

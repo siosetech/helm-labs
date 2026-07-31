@@ -1,0 +1,20 @@
+# Platform umbrella — lab values. Dependency ve global değerleri burada biriktir.
+
+nameOverride: ""
+fullnameOverride: ""
+
+# global:
+#   storageClass: ""
+#   imageRegistry: ""
+
+# Sample app (skeleton); simplify when you move to dependencies in Band 04.
+app:
+  enabled: true
+  replicaCount: 1
+  image:
+    repository: nginx
+    tag: "1.27"
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80

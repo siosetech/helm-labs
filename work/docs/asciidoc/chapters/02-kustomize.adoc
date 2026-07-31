@@ -1,0 +1,28 @@
+== Kustomize
+
+Cert focus: CKA, CKAD, CGOA. Learn after Helm CLI, before deep chart authoring.
+
+=== Mental model
+
+* *Base* — shared manifests
+* *Overlay* — env-specific patches, labels, replicas
+* *Generators* — ConfigMap/Secret with content-hashed names
+
+No template language. Patches and strategic merge instead.
+
+=== With Helm
+
+[source,bash]
+----
+helm template RELEASE CHART -f values.yaml --output-dir chart-out
+kubectl kustomize overlay   # resources point at rendered YAML
+kubectl apply -k overlay
+----
+
+In Argo CD, pick *either* Helm *or* Kustomize as the Application source type.
+
+=== Session notes
+
+////
+Add traps after Band 02 labs.
+////
