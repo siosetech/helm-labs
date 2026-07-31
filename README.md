@@ -78,11 +78,12 @@ Build runs in the Asciidoctor container — checkout needs Podman/Docker, not a 
 ```powershell
 cd work/docs
 .\build.ps1
-# → target/generated-docs/book.html
-# → target/generated-docs/book.pdf
+# → work/docs/generated/book.html
+# → work/docs/generated/book.pdf
 ```
 
-Details: [work/docs/README.md](work/docs/README.md)
+Details: [work/docs/README.md](work/docs/README.md).  
+CI: [`.github/workflows/ebook.yml`](.github/workflows/ebook.yml) writes `work/docs/generated/` and uploads artifacts.
 
 ## Getting Started
 

@@ -10,7 +10,7 @@ work/scratch/
 *.local.yaml
 chapters/02-kustomize/**/chart-out/
 
-# Ebook build (Maven / Asciidoctor)
+# Legacy ebook output path (unused; outputs go to work/docs/generated/)
 work/docs/target/
 
 # Editor

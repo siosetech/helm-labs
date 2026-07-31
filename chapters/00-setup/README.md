@@ -210,7 +210,7 @@ Same Podman; no host JDK. Needed only if you maintain `work/docs`.
 ```powershell
 cd work/docs
 .\build.ps1
-# target/generated-docs/book.html and book.pdf exist
+# generated/book.html and generated/book.pdf exist
 ```
 
 Details: [work/docs/README.md](../../work/docs/README.md)

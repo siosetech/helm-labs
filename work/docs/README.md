@@ -25,8 +25,15 @@ podman compose run --rm ebook
 
 Outputs (bind-mounted to the host):
 
-- `target/generated-docs/book.html`
-- `target/generated-docs/book.pdf`
+- `generated/book.html`
+- `generated/book.pdf`
+
+## CI
+
+[`.github/workflows/ebook.yml`](../../.github/workflows/ebook.yml) builds with the same
+Asciidoctor image when AsciiDoc sources change. It uploads artifacts **and** on
+`master`/`main` commits the files into `work/docs/generated/` so they stay in the repo.
+Manual run: Actions → ebook → Run workflow.
 
 ## Source layout
 

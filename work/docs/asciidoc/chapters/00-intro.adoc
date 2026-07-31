@@ -19,4 +19,4 @@ cd work/docs
 # Windows: .\build.ps1
 ----
 
-Outputs land in `target/generated-docs/` (`book.html`, `book.pdf`).
+Outputs land in `generated/` (`book.html`, `book.pdf`).

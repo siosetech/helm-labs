@@ -1,0 +1,74 @@
+name: ebook
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "work/docs/asciidoc/**"
+      - "work/docs/compose.yaml"
+      - "work/docs/build.ps1"
+      - "work/docs/build.sh"
+      - ".github/workflows/ebook.yml"
+  pull_request:
+    paths:
+      - "work/docs/asciidoc/**"
+      - "work/docs/compose.yaml"
+      - "work/docs/build.ps1"
+      - "work/docs/build.sh"
+      - ".github/workflows/ebook.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate HTML and PDF
+        run: |
+          set -eu
+          mkdir -p work/docs/generated
+          docker run --rm \
+            -v "$PWD/work/docs:/documents" \
+            -w /documents \
+            docker.io/asciidoctor/docker-asciidoctor:1.85 \
+            sh -c '
+              set -eu
+              mkdir -p generated
+              asciidoctor \
+                -D generated -o book.html \
+                -a project-version=0.1.0 \
+                asciidoc/book.adoc
+              asciidoctor-pdf \
+                -D generated -o book.pdf \
+                -a project-version=0.1.0 \
+                asciidoc/book.adoc
+            '
+
+      - name: Upload ebook artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: helm-labs-ebook
+          path: |
+            work/docs/generated/book.html
+            work/docs/generated/book.pdf
+          if-no-files-found: error
+
+      # Publish into the repo (not only Actions artifacts). Skipped on PRs.
+      # Path filters above omit work/docs/generated/** so this push does not loop.
+      - name: Commit generated ebook
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add work/docs/generated/book.html work/docs/generated/book.pdf
+          if git diff --staged --quiet; then
+            echo "No ebook changes to commit"
+            exit 0
+          fi
+          git commit -m "Update generated ebook"
+          git push

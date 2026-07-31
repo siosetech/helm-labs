@@ -11,13 +11,13 @@ services:
     command:
       - |
         set -eu
-        mkdir -p target/generated-docs
+        mkdir -p generated
         asciidoctor \
-          -D target/generated-docs -o book.html \
+          -D generated -o book.html \
           -a project-version=0.1.0 \
           asciidoc/book.adoc
         asciidoctor-pdf \
-          -D target/generated-docs -o book.pdf \
+          -D generated -o book.pdf \
           -a project-version=0.1.0 \
           asciidoc/book.adoc
-        echo "Wrote target/generated-docs/book.html and book.pdf"
+        echo "Wrote generated/book.html and generated/book.pdf"

@@ -15,5 +15,5 @@ fi
 
 "$ENGINE" compose run --rm ebook
 
-echo "Outputs: $(pwd)/target/generated-docs/book.html"
-echo "         $(pwd)/target/generated-docs/book.pdf"
+echo "Outputs: $(pwd)/generated/book.html"
+echo "         $(pwd)/generated/book.pdf"

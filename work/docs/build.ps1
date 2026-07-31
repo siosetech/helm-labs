@@ -17,5 +17,5 @@ if (Get-Command podman -ErrorAction SilentlyContinue) {
     throw "Neither podman nor docker found. Install Podman Desktop (or Docker) and retry."
 }
 
-Write-Host "Outputs: $PSScriptRoot\target\generated-docs\book.html"
-Write-Host "         $PSScriptRoot\target\generated-docs\book.pdf"
+Write-Host "Outputs: $PSScriptRoot\generated\book.html"
+Write-Host "         $PSScriptRoot\generated\book.pdf"
