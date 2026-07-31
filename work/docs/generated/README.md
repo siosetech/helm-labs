@@ -1,9 +1,9 @@
 # Generated ebook
 
-Build outputs land here:
+Local / CI build outputs (gitignored):
 
 - `book.html`
 - `book.pdf`
 
-Produced by `./build.ps1` / `./build.sh` locally, or by the `ebook` GitHub Action
-(which also commits these files on `master`/`main`).
+Build: `./build.ps1` or `./build.sh`.  
+CI: download the `helm-labs-ebook` artifact from the `ebook` workflow.

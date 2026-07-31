@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -56,19 +56,3 @@ jobs:
             work/docs/generated/book.html
             work/docs/generated/book.pdf
           if-no-files-found: error
-
-      # Publish into the repo (not only Actions artifacts). Skipped on PRs.
-      # Path filters above omit work/docs/generated/** so this push does not loop.
-      - name: Commit generated ebook
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-        run: |
-          set -eu
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add work/docs/generated/book.html work/docs/generated/book.pdf
-          if git diff --staged --quiet; then
-            echo "No ebook changes to commit"
-            exit 0
-          fi
-          git commit -m "Update generated ebook"
-          git push

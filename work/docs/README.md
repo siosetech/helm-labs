@@ -31,8 +31,8 @@ Outputs (bind-mounted to the host):
 ## CI
 
 [`.github/workflows/ebook.yml`](../../.github/workflows/ebook.yml) builds with the same
-Asciidoctor image when AsciiDoc sources change. It uploads artifacts **and** on
-`master`/`main` commits the files into `work/docs/generated/` so they stay in the repo.
+Asciidoctor image when AsciiDoc sources change and uploads `book.html` / `book.pdf`
+as artifacts (those files are gitignored under `generated/`).
 Manual run: Actions → ebook → Run workflow.
 
 ## Source layout

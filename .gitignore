@@ -10,8 +10,10 @@ work/scratch/
 *.local.yaml
 chapters/02-kustomize/**/chart-out/
 
-# Legacy ebook output path (unused; outputs go to work/docs/generated/)
+# Ebook outputs (build locally or download CI artifacts; do not commit)
 work/docs/target/
+work/docs/generated/*.html
+work/docs/generated/*.pdf
 
 # Editor
 .idea/

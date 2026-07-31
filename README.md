@@ -83,7 +83,7 @@ cd work/docs
 ```
 
 Details: [work/docs/README.md](work/docs/README.md).  
-CI: [`.github/workflows/ebook.yml`](.github/workflows/ebook.yml) writes `work/docs/generated/` and uploads artifacts.
+CI: [`.github/workflows/ebook.yml`](.github/workflows/ebook.yml) uploads HTML/PDF artifacts (`generated/*.html|*.pdf` are gitignored).
 
 ## Getting Started
 
